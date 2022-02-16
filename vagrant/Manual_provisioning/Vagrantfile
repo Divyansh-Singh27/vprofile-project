@@ -38,5 +38,12 @@ Vagrant.configure("2") do |config|
     db01.vm.box = "geerlingguy/centos7"
 	db01.vm.hostname = "db01"
     db01.vm.network "private_network", ip: "192.168.33.15"
+   config.vm.box = "packer_amazon-ebs_aws.box"    
+	aws.region_config "us-west-2", ami: "ami-53ba502b"
+        aws.security_groups = "default"
+        aws.instance_type = "t2.micro"  
+        aws.keypair_name = "...."  
+        override.ssh.username = "ubuntu"  
+        override.ssh.private_key_path = "..."  
   end
 end
